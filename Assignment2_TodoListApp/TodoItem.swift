@@ -8,15 +8,17 @@
 import Foundation
 
 
-class TodoItem /*  TODO (protocol) */ {
+class TodoItem: ObservableObject, Identifiable  {
     
-    /*
-     TODO (variables [min. of 2] + variable initializer)
-     */
+    var text: String
+    var id: String = UUID().uuidString
     
+    init(text: String) {
+        self.text = text
+    }
     
-    /*
-     TODO (functions [min. of 1])
-     */
+    func changeTextTo(text: String) {
+        self.text = text
+    }
     
 }

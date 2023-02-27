@@ -9,12 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     
-    /*
-     TODO (variables [min. 3])
-     */
+    @StateObject var todos: TodoItems = TodoItems()
     
     var body: some View {
-        Text("Implement here!")
+        
+        
+        VStack {
+            
+            ScrollView {
+                let items: [TodoItem] = todos.items
+
+                ForEach(items, id: \.self.id) { item in
+                    
+                    NavigationLink(item.text, destination: {TodoItemScreen().environmentObject(item)})
+                    
+                }
+                
+            }
+        }
+        
     }
 }
 
