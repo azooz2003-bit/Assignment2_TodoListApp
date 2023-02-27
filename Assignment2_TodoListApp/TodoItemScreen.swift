@@ -9,30 +9,18 @@ import SwiftUI
 
 struct TodoItemScreen: View {
     
-    @EnvironmentObject var todos: TodoItems = TodoItems()
+    @EnvironmentObject var todos: TodoItems
     
     var body: some View {
         
-        
         VStack {
             
-            ScrollView {
-                let items: [TodoItem] = todos.items
-
-                ForEach(items, id: \.self.id) { item in
-                    
-                    NavigationLink(item.t, destination: {Todo})
-                    
-                }
-                
-            }
         }
-        
     }
 }
 
 struct TodoItemScreen_Previews: PreviewProvider {
     static var previews: some View {
-        TodoItemScreen()
+        TodoItemScreen().environmentObject(TodoItems())
     }
 }

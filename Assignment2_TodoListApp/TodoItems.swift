@@ -9,7 +9,11 @@ import Foundation
 
 class TodoItems: ObservableObject {
     
-    @Published var items: [TodoItem] = []
+    @Published var items: [TodoItem]
+    
+    init() {
+        self.items = []
+    }
     
     func appendItem(item: TodoItem) {
         self.items.append(item)
