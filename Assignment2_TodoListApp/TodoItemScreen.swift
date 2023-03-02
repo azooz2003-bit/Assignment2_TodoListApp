@@ -35,6 +35,9 @@ struct TodoItemScreen: View {
             
             Button(action: {
                 clicked = false
+                let temp = TodoItem(text: "Dont care")
+                ToDoList.addToDoItem(toDo: temp)
+                ToDoList.deleteItem(toDelete: temp)
             }, label: {
                 Text("Return")
                 
