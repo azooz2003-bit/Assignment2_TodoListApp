@@ -11,7 +11,7 @@ import SwiftUI
 struct Assignment2_TodoListAppApp: App {
     var body: some Scene {
         WindowGroup {
-            TodoListScreen()
+            TodoListScreen(items: TodoItems())
         }
     }
 }

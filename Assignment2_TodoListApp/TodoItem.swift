@@ -8,7 +8,7 @@
 import Foundation
 
 
-class TodoItem:Identifiable/*  TODO (protocol) */ {
+class TodoItem:Identifiable, Encodable, Decodable/*  TODO (protocol) */ {
     
     /*
      TODO (variables [min. of 2] + variable initializer)
@@ -16,6 +16,7 @@ class TodoItem:Identifiable/*  TODO (protocol) */ {
     var id: UUID
     var title: String
     var complete: Bool
+    
     init(id: UUID = UUID(), title: String) {
         self.id = id
         self.title = title
@@ -27,5 +28,9 @@ class TodoItem:Identifiable/*  TODO (protocol) */ {
      */
     func markComplete() {
         complete = true
+    }
+    
+    func editTitle(title: String) {
+        self.title = title
     }
 }

@@ -12,14 +12,25 @@ struct TodoItemScreen: View {
     /*
      TODO (variables [min. 1])
      */
+    @State var item: TodoItem
+//    @State var title = ""
+//
+//    init(item: TodoItem){
+//        self.item = item
+//        self.title = item.title
+//    }
     
     var body: some View {
-        Text("Implement here!")
+        VStack{
+            TextField(item.title,text: $item.title)
+        Button("Complete") {
+            item.complete = true
+        }}
     }
 }
 
 struct TodoItemScreen_Previews: PreviewProvider {
     static var previews: some View {
-        TodoItemScreen()
+        TodoItemScreen(item: TodoItem(title:"Test"))
     }
 }
