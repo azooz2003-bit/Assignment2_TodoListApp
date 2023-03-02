@@ -14,7 +14,12 @@ struct TodoListScreen: View {
      */
     
     var body: some View {
-        Text("Implement here!")
+        NavigationView{
+            Text("To-do").font(Font.largeTitle).fontWeight(Font.Weight.bold)
+        }.navigationTitle("To-do")
+        VStack{
+            Text("To-do")
+        }
     }
 }
 
