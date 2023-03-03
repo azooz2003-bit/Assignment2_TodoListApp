@@ -42,4 +42,20 @@ class TodoItems: ObservableObject, Identifiable{
         self.ToDoList = [TodoItem(text: "Edit Me")]
     }
     
+    func sortByDateDes() {
+        self.ToDoList = self.ToDoList.sorted(by: { $0.date.compare($1.date) == .orderedDescending })
+    }
+    
+    func sortByDateAsc() {
+        self.ToDoList = self.ToDoList.sorted(by: { $0.date.compare($1.date) == .orderedAscending })
+    }
+    
+    func sortByDescDes() {
+        self.ToDoList = self.ToDoList.sorted(by: { $0.text.compare($1.text) == .orderedDescending })
+    }
+    
+    func sortByDescAsc() {
+        self.ToDoList = self.ToDoList.sorted(by: { $0.text.compare($1.text) == .orderedAscending })
+    }
+    
 }

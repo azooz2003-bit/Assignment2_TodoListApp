@@ -19,6 +19,7 @@ class TodoItem: ObservableObject, Identifiable, Equatable {
     @Published var text: String
     @Published var color: Color
     @Published var uuid: UUID
+    @Published var date: Date
     
     /*
      TODO (variables [min. of 2] + variable initializer)
@@ -29,6 +30,7 @@ class TodoItem: ObservableObject, Identifiable, Equatable {
                            green: .random(in: 0...1),
                            blue: .random(in: 0...1))
         self.uuid = UUID()
+        self.date = Date()
     }
     
     
