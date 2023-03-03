@@ -6,13 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
-class TodoItems /*  TODO (protocol) */ {
+class TodoItems: ObservableObject {
     
     /*
      TODO (variables [min. 1] + initializer)
      Hint: The purpose of this class is to store a collection of TodoItem objects representing the added items. Do you know why? (has to do with each todo item's state)
      */
+    @Published var items: [TodoItem]
+    
+    init(startingItems: [TodoItem]) {
+        self.items = startingItems
+    }
     
     
     /*

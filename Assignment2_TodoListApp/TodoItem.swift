@@ -6,17 +6,34 @@
 //
 
 import Foundation
+import SwiftUI
 
-
-class TodoItem /*  TODO (protocol) */ {
+class TodoItem: ObservableObject, Identifiable {
+    var id: String = UUID().uuidString
+    @Published var title: String
+    @Published var priority: Priority
+    @Published var dateAdded: Date
     
-    /*
-     TODO (variables [min. of 2] + variable initializer)
-     */
     
+    init(title: String, priority: Priority) {
+        self.title = title
+        self.priority = priority
+        self.dateAdded = Date()
+    }
     
-    /*
-     TODO (functions [min. of 1])
-     */
+    // TODO: add functions
     
+    enum Priority {
+        case low
+        case medium
+        case high
+        
+        func color() -> Color {
+            switch self {
+                case .low: return .gray
+                case .medium: return .yellow
+                case .high: return .red
+            }
+        }
+    }
 }
