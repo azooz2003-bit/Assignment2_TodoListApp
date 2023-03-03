@@ -10,7 +10,7 @@ import SwiftUI
 struct TodoListView: View {
     
     @StateObject var todos: TodoItems = TodoItems()
-    
+        
     @State var newItem: String = ""
     
     var body: some View {
@@ -23,12 +23,10 @@ struct TodoListView: View {
                 Text("My Todos").font(.largeTitle).bold().fontDesign(.rounded)
                 
                 ScrollView {
-                    let items: [TodoItem] = todos.items
-                    
-                    ForEach(items, id: \.self.id) { item in
+                    ForEach(todos.items, id: \.self.id) { item in
                         
                         NavigationLink(destination: {
-                            TodoItemScreen().environmentObject(item)
+                            TodoItemScreen(todo: item)
                         }, label: {
                             Text(item.text).foregroundColor(.black).padding(.vertical).frame(width: 300, height: 50).background(content: {Color.blue}).cornerRadius(5)
                         })
@@ -37,6 +35,7 @@ struct TodoListView: View {
                     }
                     
                 }.padding(.top, 30)
+                
                 
                 HStack {
                     TextField("Please enter a new todo item.", text: $newItem)

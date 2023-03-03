@@ -6,13 +6,31 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
+
 
 class TodoItems: ObservableObject {
     
-    @Published var items: [TodoItem]
+    @Published var items: [TodoItem] = [] {
+        didSet {
+            updateTextSubscriptions()
+        }
+    }
+
+    var bag = [AnyCancellable?]()
     
     init() {
-        self.items = []
+        updateTextSubscriptions()
+    }
+    
+    func updateTextSubscriptions() {
+        bag = items.map({ item in
+            item.objectWillChange.sink(receiveValue: {
+                self.objectWillChange.send()
+            })
+            
+        })
     }
     
     func appendItem(item: TodoItem) {
