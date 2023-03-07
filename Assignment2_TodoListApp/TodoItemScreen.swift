@@ -10,20 +10,24 @@ import SwiftUI
 struct TodoItemScreen: View {
     @Environment(\.dismiss) private var dismiss
 
-    @ObservedObject var todo: TodoItem
+    @EnvironmentObject var todo: TodoItem
         
     var body: some View {
         
         VStack {
             
-            TextField("Edit  me", text: $todo.text)
+            TextField("Edit  me", text: $todo.text).frame(width: 100).multilineTextAlignment(.center)
+            
             Button("Return by clicking me.", action: {
-                todo.objectWillChange.send()
                 dismiss()
             })
+            
         }
     }
 }
+
+
+
 
 struct TodoItemScreen_Previews: PreviewProvider {
     static var previews: some View {

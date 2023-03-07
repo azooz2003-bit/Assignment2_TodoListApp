@@ -12,12 +12,11 @@ import Combine
 class TodoItem: ObservableObject, Identifiable  {
     
     @Published var text: String
-    var id: String = UUID().uuidString
-    
+    var id: String
     
     init(text: String) {
         self.text = text
-        
+        self.id = UUID().uuidString
     }
     
     func changeTextTo(text: String) {

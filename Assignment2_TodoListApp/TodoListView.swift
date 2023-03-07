@@ -26,9 +26,13 @@ struct TodoListView: View {
                     ForEach(todos.items, id: \.self.id) { item in
                         
                         NavigationLink(destination: {
-                            TodoItemScreen(todo: item)
+                            TodoItemScreen().environmentObject(item)
                         }, label: {
-                            Text(item.text).foregroundColor(.black).padding(.vertical).frame(width: 300, height: 50).background(content: {Color.blue}).cornerRadius(5)
+                            Text(item.text).foregroundColor(.black)
+                                .padding(.vertical)
+                                .frame(width: 300, height: 50)
+                                .background(content: {Color.blue})
+                                .cornerRadius(5)
                         })
                         
                         
@@ -47,8 +51,12 @@ struct TodoListView: View {
                         newItem = ""
                         
                     }, label: {
-                        Circle().foregroundColor(.blue).overlay(content: {
-                            Image(systemName: "play.fill").foregroundColor(.white).font(.largeTitle)
+                        Circle()
+                            .foregroundColor(.blue)
+                            .overlay(content: {
+                            Image(systemName: "play.fill")
+                                .foregroundColor(.white)
+                                .font(.largeTitle)
                         }).frame(width: 50, height: 50)
                         
                     })

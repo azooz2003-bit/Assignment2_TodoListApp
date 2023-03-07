@@ -12,7 +12,7 @@ import Combine
 
 class TodoItems: ObservableObject {
     
-    @Published var items: [TodoItem] = [] {
+    var items: [TodoItem] = [] {
         didSet {
             updateTextSubscriptions()
         }
