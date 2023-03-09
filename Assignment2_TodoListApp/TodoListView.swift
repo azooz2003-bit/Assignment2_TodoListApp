@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TodoListView: View {
     
-    @StateObject var todos: TodoItems = TodoItems()
+    @StateObject var todos: TodoItemsViewModel = TodoItemsViewModel()
         
     @State var newItem: String = ""
     
