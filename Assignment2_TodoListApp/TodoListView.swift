@@ -25,15 +25,32 @@ struct TodoListView: View {
                 ScrollView {
                     ForEach(todos.items, id: \.self.id) { item in
                         
-                        NavigationLink(destination: {
-                            TodoItemScreen().environmentObject(item)
-                        }, label: {
-                            Text(item.text).foregroundColor(.black)
-                                .padding(.vertical)
-                                .frame(width: 300, height: 50)
-                                .background(content: {Color.blue})
-                                .cornerRadius(5)
-                        })
+                        
+                        ZStack {
+                            NavigationLink(destination: {
+                                TodoItemScreen().environmentObject(item)
+                            }, label: {
+                                
+                                Text(item.text)
+                                    .foregroundColor(.white)
+                                    .padding(.vertical)
+                                    .frame(width: 300, height: 50)
+                                    .background(content: {Color.blue})
+                                    .cornerRadius(5)
+                                    
+                            })
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                
+                            }, label: {
+                                Image(systemName: "square.and.arrow.up")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.white)
+                            }).offset(x: 120)
+                        }
+                        
                         
                         
                     }

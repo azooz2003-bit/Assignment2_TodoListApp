@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A34F457A29BC272E00459E2D /* MulltipeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34F457929BC272D00459E2D /* MulltipeerManager.swift */; };
 		A37426AC29AD48CC008074E4 /* Assignment2_TodoListAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37426AB29AD48CC008074E4 /* Assignment2_TodoListAppApp.swift */; };
 		A37426AE29AD48CC008074E4 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37426AD29AD48CC008074E4 /* TodoListView.swift */; };
 		A37426B029AD48CD008074E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A37426AF29AD48CD008074E4 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A34F457929BC272D00459E2D /* MulltipeerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulltipeerManager.swift; sourceTree = "<group>"; };
 		A37426A829AD48CC008074E4 /* Assignment2_TodoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment2_TodoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37426AB29AD48CC008074E4 /* Assignment2_TodoListAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment2_TodoListAppApp.swift; sourceTree = "<group>"; };
 		A37426AD29AD48CC008074E4 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				A37426AD29AD48CC008074E4 /* TodoListView.swift */,
 				A37426B929AD5387008074E4 /* TodoItemsViewModel.swift */,
 				A37426BB29AD539F008074E4 /* TodoItem.swift */,
+				A34F457929BC272D00459E2D /* MulltipeerManager.swift */,
 				A37426AF29AD48CD008074E4 /* Assets.xcassets */,
 				A37426B129AD48CD008074E4 /* Preview Content */,
 			);
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A34F457A29BC272E00459E2D /* MulltipeerManager.swift in Sources */,
 				A37426BE29AD5579008074E4 /* TodoItemScreen.swift in Sources */,
 				A37426BA29AD5387008074E4 /* TodoItemsViewModel.swift in Sources */,
 				A37426AE29AD48CC008074E4 /* TodoListView.swift in Sources */,
