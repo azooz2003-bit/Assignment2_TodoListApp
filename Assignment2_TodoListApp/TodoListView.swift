@@ -9,18 +9,33 @@ import SwiftUI
 
 struct TodoListView: View {
     
-    @StateObject var todos: TodoItemsViewModel = TodoItemsViewModel()
+    @StateObject var todos: TodoItemsViewModel = TodoItemsViewModel(multipeer: MultipeerManager())
         
     @State var newItem: String = ""
     
+
     var body: some View {
+        
+        let multipeer = todos.multipeer
         
         NavigationStack {
             
-            
             VStack {
                 
-                Text("My Todos").font(.largeTitle).bold().fontDesign(.rounded)
+                HStack {
+                    
+                    Button(action: {
+                        multipeer.requestOneTodoItem()
+                    }, label: {
+                        Image(systemName: "dot.radiowaves.left.and.right")
+                    })
+                    
+                    Text("My Todos")
+                        .font(.largeTitle)
+                        .bold()
+                        .fontDesign(.rounded)
+                }
+                
                 
                 ScrollView {
                     ForEach(todos.items, id: \.self.id) { item in
@@ -43,7 +58,8 @@ struct TodoListView: View {
                             Spacer()
                             
                             Button(action: {
-                                
+                                multipeer.setToBeShared(item: item)
+                                multipeer.listRequesters()
                             }, label: {
                                 Image(systemName: "square.and.arrow.up")
                                     .font(.system(size: 20))
@@ -81,6 +97,7 @@ struct TodoListView: View {
             }
         }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
