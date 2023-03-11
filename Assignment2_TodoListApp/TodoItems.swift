@@ -38,3 +38,14 @@ class TodoItems: ObservableObject {
     }
     
 }
+
+extension TodoItems {
+    
+    func deleteLastItem() {
+        self.items.removeLast()
+    }
+}
+
+
+
+

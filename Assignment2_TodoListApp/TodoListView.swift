@@ -64,6 +64,7 @@ struct TodoListView: View {
             }
         }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
