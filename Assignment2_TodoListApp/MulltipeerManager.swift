@@ -16,8 +16,8 @@ class MultipeerManager: NSObject, ObservableObject {
     var session: MCSession
     var advertiser: MCNearbyServiceAdvertiser? // Automatically initialized to nil.
     
-    var toBeShared: TodoItem?
-    @Published var received: TodoItem?
+    var toBeShared: TodoItem? // ANY SHARED ITEM
+    @Published var received: TodoItem? // ANY RECEIVED ITEM
     
     var delegate: TodoItemsViewModel?
     
@@ -36,7 +36,7 @@ class MultipeerManager: NSObject, ObservableObject {
         self.advertiser?.startAdvertisingPeer()
     }
     
-    func setToBeShared(item: TodoItem) {
+    func setToBeShared(item: TodoItem) { //
         self.toBeShared = item
         print("Item was set: \(toBeShared != nil)")
     }
@@ -69,7 +69,10 @@ class MultipeerManager: NSObject, ObservableObject {
 
 // Telling our class to also implement the MCSessionDelegate protocol.
 extension MultipeerManager: MCSessionDelegate {
+    
+    // This variation performs specific lines of code in response to connection status:
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
+        
         switch state {
         case .connected:
             print("Connected.")
@@ -83,6 +86,7 @@ extension MultipeerManager: MCSessionDelegate {
         }
     }
     
+    // This variation is triggered once data is received:
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         
         print("Data received: \(data)")
@@ -100,7 +104,7 @@ extension MultipeerManager: MCSessionDelegate {
         
         // Append data when data is received:
         
-        delegate!.appendItem(item: received!)
+        delegate!.appendItem(item: received!) // Delegate is our TodoListViewModel, which we will inform once data is received.
         
          
     }
@@ -138,7 +142,7 @@ extension MultipeerManager: MCBrowserViewControllerDelegate {
         
         // If connected to the other user:
         print("Shared is nil: \(toBeShared == nil)")
-        share { success in     // share your todoItem
+        share() { success in     // share your todoItem
             print("Is success: \(success)")
         }
     }
