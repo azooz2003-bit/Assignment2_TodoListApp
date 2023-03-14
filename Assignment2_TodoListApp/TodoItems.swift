@@ -12,6 +12,8 @@ import Combine
 
 class TodoItems: ObservableObject {
     
+    var multipeer: MultipeerManager
+    
     var items: [TodoItem] = [] {
         didSet {
             updateTextSubscriptions()
@@ -20,7 +22,9 @@ class TodoItems: ObservableObject {
 
     var bag = [AnyCancellable?]()
     
-    init() {
+    init(multipeer: MultipeerManager) {
+        self.multipeer = multipeer
+        self.multipeer.delegate = self
         updateTextSubscriptions()
     }
     
@@ -35,6 +39,9 @@ class TodoItems: ObservableObject {
     
     func appendItem(item: TodoItem) {
         self.items.append(item)
+        DispatchQueue.main.async { // DW about this, ensures we're updating the views from the main thread (SwiftUI must be rendered on the main).
+            self.objectWillChange.send() // To signal a change in the array to our view.
+        }
     }
     
 }

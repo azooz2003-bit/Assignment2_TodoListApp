@@ -4,36 +4,68 @@
 //
 //  Created by Abdulaziz Albahar on 2/27/23.
 //
-
 import SwiftUI
 
 struct TodoListView: View {
     
-    @StateObject var todos: TodoItems = TodoItems()
+    @StateObject var todos: TodoItems = TodoItems(multipeer: MultipeerManager())
         
     @State var newItem: String = ""
     
+
     var body: some View {
+        
+        let multipeer = todos.multipeer
         
         NavigationStack {
             
-            
             VStack {
                 
-                Text("My Todos").font(.largeTitle).bold().fontDesign(.rounded)
+                HStack {
+                    
+                    Button(action: {
+                        multipeer.requestOneTodoItem()
+                    }, label: {
+                        Image(systemName: "dot.radiowaves.left.and.right")
+                    })
+                    
+                    Text("My Todos")
+                        .font(.largeTitle)
+                        .bold()
+                        .fontDesign(.rounded)
+                }
+                
                 
                 ScrollView {
                     ForEach(todos.items, id: \.self.id) { item in
                         
-                        NavigationLink(destination: {
-                            TodoItemScreen().environmentObject(item)
-                        }, label: {
-                            Text(item.text).foregroundColor(.black)
-                                .padding(.vertical)
-                                .frame(width: 300, height: 50)
-                                .background(content: {Color.blue})
-                                .cornerRadius(5)
-                        })
+                        
+                        ZStack {
+                            NavigationLink(destination: {
+                                TodoItemScreen().environmentObject(item)
+                            }, label: {
+                                
+                                Text(item.text)
+                                    .foregroundColor(.white)
+                                    .padding(.vertical)
+                                    .frame(width: 300, height: 50)
+                                    .background(content: {Color.blue})
+                                    .cornerRadius(5)
+                                    
+                            })
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                multipeer.setToBeShared(item: item)
+                                multipeer.listRequesters()
+                            }, label: {
+                                Image(systemName: "square.and.arrow.up")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.white)
+                            }).offset(x: 120)
+                        }
+                        
                         
                         
                     }
