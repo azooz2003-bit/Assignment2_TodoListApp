@@ -8,15 +8,20 @@
 import Foundation
 
 
-class TodoItem /*  TODO (protocol) */ {
+class TodoItem: Identifiable {
+    let id: String
+    var title: String
+    var desc: String
+    var deadline: String // i am too lazy to make this a date but it's a date string trust
     
-    /*
-     TODO (variables [min. of 2] + variable initializer)
-     */
+    init(title: String, desc: String, deadline: String) {
+        self.id = UUID().uuidString
+        self.title = title
+        self.desc = desc
+        self.deadline = deadline
+    }
     
-    
-    /*
-     TODO (functions [min. of 1])
-     */
-    
+    func changeDescription(desc: String) {
+        self.desc = desc
+    }
 }

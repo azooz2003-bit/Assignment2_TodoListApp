@@ -11,7 +11,31 @@ import SwiftUI
 struct Assignment2_TodoListAppApp: App {
     var body: some Scene {
         WindowGroup {
-            TodoListScreen()
+            TodoListScreen(
+                todoItems: TodoItems([
+                    TodoItem(
+                        title: "itemA",
+                        desc: "this does things",
+                        deadline: "09/26/2023"
+                    ),
+                    TodoItem(
+                        title: "itemB",
+                        desc: "this does things",
+                        deadline: "09/26/2023"
+                    ),
+                    TodoItem(
+                        title: "itemC",
+                        desc: "this does things",
+                        deadline: "09/26/2023"
+                    ),
+                    TodoItem(
+                        title: "itemD",
+                        desc: "this does things",
+                        deadline: "09/26/2023"
+                    )
+                    
+                ])
+            )
         }
     }
 }

@@ -7,16 +7,22 @@
 
 import Foundation
 
-class TodoItems /*  TODO (protocol) */ {
+class TodoItems {
+    var items: [TodoItem]
+    var selected: TodoItem?
     
-    /*
-     TODO (variables [min. 1] + initializer)
-     Hint: The purpose of this class is to store a collection of TodoItem objects representing the added items. Do you know why? (has to do with each todo item's state)
-     */
+    init() {
+        self.items = []
+    }
+    init(_ items: [TodoItem]) {
+        self.items = items
+    }
     
-    
-    /*
-     TODO (functions [min. 1])
-     */
-    
+    func addItem(item: TodoItem) {
+        self.items.append(item)
+    }
+    func select(item: TodoItem) {
+        // if i weren't lazy, assert item is in items
+        self.selected = item;
+    }
 }

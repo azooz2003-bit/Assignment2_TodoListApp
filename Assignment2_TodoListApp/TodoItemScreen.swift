@@ -8,18 +8,26 @@
 import SwiftUI
 
 struct TodoItemScreen: View {
-    
-    /*
-     TODO (variables [min. 1])
-     */
+    var item: TodoItem
     
     var body: some View {
-        Text("Implement here!")
+        NavigationView {
+            VStack {
+                
+            }
+            .navigationTitle(item.title)
+        }
     }
 }
 
 struct TodoItemScreen_Previews: PreviewProvider {
     static var previews: some View {
-        TodoItemScreen()
+        TodoItemScreen(
+            item: TodoItem(
+                title: "item",
+                desc: "this does things",
+                deadline: "09/26/2023"
+            )
+        )
     }
 }
