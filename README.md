@@ -1,4 +1,4 @@
-# Assignment 2 - TodoListApp
+# Assignment 2 - Todolist App
 
 The main goal of this assignment is to test your SwiftUI knowledge while ensuring that you're able to adhere to a set of conventions. You have complete control over the design of this sample app, however you must implement the app using the instructions below. Try to be creative! The last SwiftUI tutorial should contain hints to help.
 
